@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using BrewsBizSystem.Models;
+using Dapper;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +17,16 @@ namespace BrewsBizSystem.DataAccess
     {
       _connectionString = config.GetConnectionString("BrewsBizSystem");
     }
+
+    internal List<Product> GetAll()
+    {
+      using var db = new SqlConnection(_connectionString);
+
+      var products = db.Query<Product>(@"SELECT *
+                                         FROM PRODUCTS").ToList();
+
+      return products;
+    }
+
   }
 }
