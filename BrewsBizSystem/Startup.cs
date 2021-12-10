@@ -1,3 +1,4 @@
+using BrewsBizSystem.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +28,13 @@ namespace BrewsBizSystem
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddSingleton<IConfiguration>(Configuration);
+      services.AddTransient<CustomerRepository>();
+      services.AddTransient<OrderDetailRepository>();
+      services.AddTransient<OrderRepository>();
+      services.AddTransient<ProductRepository>();
+      services.AddTransient<QuoteDetailRepository>();
+      services.AddTransient<QuoteRepository>();
+      services.AddTransient<UserRepository>();
 
       services.AddControllers();
       services.AddSwaggerGen(c =>
