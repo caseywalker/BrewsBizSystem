@@ -25,5 +25,23 @@ namespace BrewsBizSystem.Controllers
     {
       return _repo.GetAll();
     }
+    
+    [HttpGet("validateUser/{userUID}")]
+    public bool ValidateUser(string userUID)
+    {
+      return _repo.IsAUser(userUID);
+    }
+
+    [HttpGet("getUserByUserUID/{userUID}")]
+    public User GetUserByUID(string userUID)
+    {
+      return _repo.GetByUserUID(userUID);
+    }
+
+    [HttpGet("getUserByID/{userID}")]
+    public User getUserByID(Guid userID)
+    {
+      return _repo.GetUserByID(userID);
+    }
   }
 }

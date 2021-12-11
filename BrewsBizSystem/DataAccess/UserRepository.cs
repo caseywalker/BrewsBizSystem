@@ -26,5 +26,44 @@ namespace BrewsBizSystem.DataAccess
 
       return users;
     }
+
+    internal bool IsAUser(string userUID)
+    {
+      using var db = new SqlConnection(_connectionString);
+
+      var sql = @"IF EXISTS(SELECT *
+                  FROM USERS
+                  WHERE UserUID=@userUID) SELECT 1 ELSE SELECT 0";
+
+      var result = db.QueryFirstOrDefault<bool>(sql, new { userUID });
+
+      return result;
+    }
+
+    internal User GetByUserUID(string userUID)
+    {
+      using var db = new SqlConnection(_connectionString);
+
+      var sql = @"SELECT *
+                  FROM USERS
+                  WHERE UserUID=@userUID";
+
+      var user = db.QueryFirstOrDefault<User>(sql, new { userUID });
+
+      return user;
+    }
+
+    internal User GetUserByID(Guid userID)
+    {
+      using var db = new SqlConnection(_connectionString);
+
+      var sql = @"SELECT *
+                  FROM USERS
+                  WHERE UserID = @userID";
+
+      var user = db.QueryFirstOrDefault<User>(sql, new { userID });
+
+      return user;
+    }
   }
 }
