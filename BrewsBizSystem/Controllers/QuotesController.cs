@@ -26,5 +26,23 @@ namespace BrewsBizSystem.Controllers
     {
       return _repo.GetAll();
     }
+
+    [HttpGet("getQuoteByQuoteID/{quoteID}")]
+    public Quote GetQuoteByID(Guid quoteID)
+    {
+      return _repo.GetQuoteByQuoteID(quoteID);
+    }
+
+    [HttpPost]
+    public void CreateQuote(NewQuote quote)
+    {
+      _repo.CreateNewQuote(quote);
+    }
+
+    [HttpPut("addProductToQuote/{quoteID}")]
+    public Quote AddProductToQuote(Guid quoteID, QuoteProduct lineItem)
+    {
+      return _repo.AddProduct(quoteID, lineItem);
+    }
   }
 }

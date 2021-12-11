@@ -26,5 +26,105 @@ namespace BrewsBizSystem.DataAccess
 
       return quotes;
     }
+
+    internal Quote GetQuoteByQuoteID(Guid quoteID)
+    {
+      using var db = new SqlConnection(_connectionString);
+
+      var sql = @"SELECT *
+                  FROM Quote
+                  WHERE QuoteID = @quoteID";
+
+      return db.QueryFirstOrDefault<Quote>(sql, new { quoteID });
+    }
+
+    internal void CreateNewQuote(NewQuote quote)
+    {
+      using var db = new SqlConnection(_connectionString);
+
+      var sql = @"INSERT INTO dbo.QUOTES
+           (UserID
+           ,CustomerID
+           ,QuoteAmount
+           ,Complete)
+     VALUES
+           (@UserID
+           ,@CustomerID
+           ,0.0
+           ,0)";
+
+      var result = db.Execute(sql, quote);
+    }
+
+    internal Quote AddProduct(Guid quoteID, QuoteProduct newItem)
+    {
+      //Start by getting the product we are adding to insert into quote details.
+      using var db = new SqlConnection(_connectionString);
+
+      var productSql = @"SELECT *
+                        FROM PRODUCTS
+                        Where ProductID = @id";
+
+      var thisProduct = db.QueryFirstOrDefault<Product>(productSql, new { id = newItem.ProductID });
+
+      var quoteDetailPrice = thisProduct.ProductPrice;
+
+      //instatiate a new quote detail line item to insert into the database to update the quote. 
+      var thisQuoteDetail = new NewQuoteDetail();
+      thisQuoteDetail.QuoteID = quoteID;
+      thisQuoteDetail.ProductID = thisProduct.ProductID;
+      thisQuoteDetail.ProductQuantity = newItem.ProductQuantity;
+      thisQuoteDetail.ProductPrice = quoteDetailPrice;
+
+      var addQuoteDetailSql = @"INSERT INTO dbo.QUOTEDETAILS
+           (QuoteID
+           ,ProductID
+           ,ProductQuantity
+           ,ProductPrice)
+     VALUES
+           (@QuoteID
+           ,@ProductID
+           ,@ProductQuantity
+           ,@ProductPrice)";
+
+      db.Execute(addQuoteDetailSql, thisQuoteDetail);
+
+      //Now we need to update the quote total, and update the database
+      var thisQuoteTotal = 0m;
+
+      var updatedDetailsSql = @"SELECT *
+                                FROM QUOTEDETAILS
+                                WHERE QuoteID = @quoteID";
+
+      var theseDetails = db.Query<QuoteDetail>(updatedDetailsSql, new { quoteID }).ToList();
+
+      //Loop through each quote line item to update the total.
+      foreach (var orderItem in theseDetails)
+      {
+        var thisLineTotal = Convert.ToDecimal(orderItem.ProductQuantity * orderItem.ProductPrice);
+        thisQuoteTotal += thisLineTotal;
+      }
+
+      var paramObj = new
+      {
+        QuoteAmount = thisQuoteTotal,
+        QuoteID = quoteID
+      };
+
+      var UpdateQuoteSql = @"UPDATE dbo.QUOTES
+                            SET QuoteAmount = @quoteAmount
+                            WHERE QuoteID = @quoteID";
+
+      db.Execute(UpdateQuoteSql, paramObj);
+
+      var finalSql = @"SELECT * 
+                      FROM QUOTES
+                      WHERE QuoteID = @quoteID";
+
+      var finalQuote = db.QueryFirstOrDefault<Quote>(finalSql, new { quoteID });
+
+      return finalQuote;
+
+    }
   }
 }
