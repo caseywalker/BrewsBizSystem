@@ -27,5 +27,47 @@ namespace BrewsBizSystem.DataAccess
 
       return customers;
     }
+
+    internal Customer GetCustomerByID(Guid customerID)
+    {
+      using var db = new SqlConnection(_connectionString);
+
+      var sql = @"SELECT *
+                  FROM Customers
+                  WHERE CustomerID = @customerID";
+
+      return db.QueryFirstOrDefault<Customer>(sql, new { customerID });
+    }
+
+    internal Customer GetCustomerByName(string customerName)
+    {
+      using var db = new SqlConnection(_connectionString);
+
+      var sql = @"SELECT *
+                  FROM Customers
+                  WHERE CustomerName = @customerName";
+
+      return db.QueryFirstOrDefault<Customer>(sql, new { customerName });
+    }
+
+    internal void CreateCustomer (NewCustomer newCustomer)
+    {
+      using var db = new SqlConnection(_connectionString);
+
+      var sql = @"INSERT INTO dbo.CUSTOMERS
+           (CustomerName
+           ,CustomerAddress
+           ,CustomerCity
+           ,CustomerZipCode
+           ,CustomerState)
+     VALUES
+           (@CustomerName
+           ,@CustomerAddress
+           ,@CustomerCity
+           ,@CustomerZipCode
+           ,@CustomerState)";
+
+      var result = db.Execute(sql, newCustomer);
+    }
   }
 }
