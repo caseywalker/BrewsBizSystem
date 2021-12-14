@@ -27,5 +27,17 @@ namespace BrewsBizSystem.DataAccess
 
       return quoteDetails;
     }
+
+    internal List<QuoteDetail> GetByQuoteID(Guid quoteID)
+    {
+      using var db = new SqlConnection(_connectionString);
+
+      var quoteDetails = db.Query<QuoteDetail>(@"SELECT *
+                                                FROM QUOTEDETAILS
+                                                WHERE QuoteID = @quoteID", new { quoteID }).ToList();
+
+      return quoteDetails;
+    }
+
   }
 }

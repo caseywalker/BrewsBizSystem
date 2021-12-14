@@ -26,5 +26,11 @@ namespace BrewsBizSystem.Controllers
     {
       return _repo.GetAll();
     }
+
+    [HttpGet("getQuoteDetailsByQuoteID/{quoteID}")]
+    public List<QuoteDetail> GetQuoteDetailsByQuoteID(Guid quoteID)
+    {
+      return _repo.GetByQuoteID(quoteID);
+    }
   }
 }

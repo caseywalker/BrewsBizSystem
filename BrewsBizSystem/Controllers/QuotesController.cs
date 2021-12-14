@@ -44,5 +44,17 @@ namespace BrewsBizSystem.Controllers
     {
       return _repo.AddProduct(quoteID, lineItem);
     }
+
+    [HttpPut("removeProductFromQuote/{quoteDetailID}/{quoteID}")]
+    public Quote RemoveProductFromQuote(Guid quoteDetailID, Guid quoteID)
+    {
+      return _repo.RemoveProduct(quoteDetailID, quoteID);
+    }
+
+    [HttpPut("updateProductQuantity/{quoteDetailID}/{quoteID}/{productQuantity}")]
+    public Quote UpdateProductQuantity(Guid quoteDetailID, Guid quoteID, int productQuantity)
+    {
+      return _repo.UpdateProduct(quoteDetailID, quoteID, productQuantity);
+    }
   }
 }
