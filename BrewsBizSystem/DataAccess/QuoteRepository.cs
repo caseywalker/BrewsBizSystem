@@ -226,11 +226,11 @@ namespace BrewsBizSystem.DataAccess
         QuoteID = quoteID
       };
 
-      var UpdateQuoteSql = @"UPDATE dbo.QUOTES
+      var updateQuoteSql = @"UPDATE dbo.QUOTES
                             SET QuoteAmount = @quoteAmount
                             WHERE QuoteID = @quoteID";
 
-      db.Execute(UpdateQuoteSql, paramObj);
+      db.Execute(updateQuoteSql, paramObj);
 
       var finalSql = @"SELECT * 
                       FROM QUOTES
