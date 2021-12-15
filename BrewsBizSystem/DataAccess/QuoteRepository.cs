@@ -27,6 +27,19 @@ namespace BrewsBizSystem.DataAccess
       return quotes;
     }
 
+    internal List<Quote> GetOpenQuotes()
+    {
+      using var db = new SqlConnection(_connectionString);
+
+      var sql = @"SELECT *
+                  FROM QUOTES
+                  WHERE COMPLETE = 0";
+
+      var quotes = db.Query<Quote>(sql).ToList();
+
+      return quotes;
+    }
+
     internal Quote GetQuoteByQuoteID(Guid quoteID)
     {
       using var db = new SqlConnection(_connectionString);

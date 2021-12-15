@@ -33,6 +33,12 @@ namespace BrewsBizSystem.Controllers
       return _repo.GetQuoteByQuoteID(quoteID);
     }
 
+    [HttpGet("getOpenQuotes")]
+    public List<Quote> GetOpenQuotes()
+    {
+      return _repo.GetOpenQuotes();
+    }
+
     [HttpPost]
     public void CreateQuote(NewQuote quote)
     {
