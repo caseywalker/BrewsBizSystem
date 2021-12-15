@@ -62,5 +62,11 @@ namespace BrewsBizSystem.Controllers
     {
       return _repo.UpdateProduct(quoteDetailID, quoteID, productQuantity);
     }
+
+    [HttpDelete("deleteQuote/{quoteID}")]
+    public void DeleteQuote(Guid quoteID)
+    {
+      _repo.DeleteQuote(quoteID);
+    }
   }
 }

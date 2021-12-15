@@ -240,5 +240,21 @@ namespace BrewsBizSystem.DataAccess
 
       return finalQuote;
     }
+
+    internal void DeleteQuote(Guid quoteID)
+    {
+      using var db = new SqlConnection(_connectionString);
+
+      var detailSql = @"DELETE FROM dbo.QUOTEDETAILS
+                        WHERE QuoteID = @quoteID";
+
+      db.Execute(detailSql, new { quoteID });
+
+      var quoteSql = @"DELETE FROM dbo.QUOTES
+                        WHERE QuoteID = @quoteID";
+
+      db.Execute(quoteSql, new { quoteID });
+
+    }
   }
 }
