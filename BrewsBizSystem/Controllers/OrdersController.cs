@@ -26,5 +26,17 @@ namespace BrewsBizSystem.Controllers
       return _repo.GetAll();
     }
 
+    [HttpGet("getOrderByID/{orderID}")]
+    public Order GetOrderByID(Guid orderID)
+    {
+      return _repo.GetByOrderID(orderID);
+    }
+
+    [HttpPost("createOrder/{quoteID}")]
+    public Order CreateOrder(Guid quoteID)
+    {
+      return _repo.CreateNewOrder(quoteID);
+    }
+    
   }
 }
