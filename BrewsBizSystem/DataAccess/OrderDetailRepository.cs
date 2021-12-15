@@ -27,5 +27,18 @@ namespace BrewsBizSystem.DataAccess
 
       return orderDetails;
     }
+
+    internal List<OrderDetail> GetByOrderID(Guid orderID)
+    {
+      using var db = new SqlConnection(_connectionString);
+
+      var sql = @"SELECT *
+                  FROM ORDERDETAILS
+                  WHERE OrderID = @orderID";
+
+      var orderDetails = db.Query<OrderDetail>(sql, new { orderID }).ToList();
+
+      return orderDetails;
+    }
   }
 }
