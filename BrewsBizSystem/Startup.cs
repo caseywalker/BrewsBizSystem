@@ -35,6 +35,7 @@ namespace BrewsBizSystem
       services.AddTransient<QuoteDetailRepository>();
       services.AddTransient<QuoteRepository>();
       services.AddTransient<UserRepository>();
+      services.AddTransient<ReportRepository>();
 
       services.AddControllers();
       services.AddSwaggerGen(c =>
@@ -58,6 +59,8 @@ namespace BrewsBizSystem
       app.UseRouting();
 
       app.UseAuthorization();
+
+      app.UseCors(cfg => cfg.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
       app.UseEndpoints(endpoints =>
       {
