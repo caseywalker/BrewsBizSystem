@@ -35,6 +35,7 @@ namespace BrewsBizSystem
       services.AddTransient<QuoteDetailRepository>();
       services.AddTransient<QuoteRepository>();
       services.AddTransient<UserRepository>();
+      services.AddTransient<ReportRepository>();
 
       services.AddControllers();
       services.AddSwaggerGen(c =>
