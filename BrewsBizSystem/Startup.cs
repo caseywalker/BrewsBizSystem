@@ -60,6 +60,8 @@ namespace BrewsBizSystem
 
       app.UseAuthorization();
 
+      app.UseCors(cfg => cfg.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+
       app.UseEndpoints(endpoints =>
       {
         endpoints.MapControllers();
