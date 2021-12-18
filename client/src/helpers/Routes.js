@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Home from '../views/Home';
 import Products from '../views/Products';
+import Customers from '../views/Customers';
 
 const PrivateRoute = ({
   component: Component,
@@ -36,6 +37,15 @@ function Routes({
           userFromDB={userFromDB}
           path='/products'
           component={() => <Products
+            user={user}
+            userFromDB={userFromDB}
+          />}
+        />
+          <PrivateRoute
+          user={user}
+          userFromDB={userFromDB}
+          path='/customers'
+          component={() => <Customers
             user={user}
             userFromDB={userFromDB}
           />}

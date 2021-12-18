@@ -22,6 +22,9 @@ const NavBar = ({ user, userFromDB }) => {
       <NavItem>
         <Link className="nav-link" to="/products">Products</Link>
       </NavItem>
+      <NavItem>
+        <Link className="nav-link" to="/customers">Customers</Link>
+      </NavItem>
     </>
   );
 
