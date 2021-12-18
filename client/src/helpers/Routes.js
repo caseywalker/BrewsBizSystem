@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import Home from '../views/Home';
 import Products from '../views/Products';
 import Customers from '../views/Customers';
+import Quotes from '../views/Quotes';
+import Orders from '../views/Orders';
 
 const PrivateRoute = ({
   component: Component,
@@ -41,11 +43,29 @@ function Routes({
             userFromDB={userFromDB}
           />}
         />
-          <PrivateRoute
+        <PrivateRoute
           user={user}
           userFromDB={userFromDB}
           path='/customers'
           component={() => <Customers
+            user={user}
+            userFromDB={userFromDB}
+          />}
+        />
+        <PrivateRoute
+          user={user}
+          userFromDB={userFromDB}
+          path='/quotes'
+          component={() => <Quotes
+            user={user}
+            userFromDB={userFromDB}
+          />}
+        />
+        <PrivateRoute
+          user={user}
+          userFromDB={userFromDB}
+          path='/orders'
+          component={() => <Orders
             user={user}
             userFromDB={userFromDB}
           />}

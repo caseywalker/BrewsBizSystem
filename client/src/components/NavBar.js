@@ -25,6 +25,12 @@ const NavBar = ({ user, userFromDB }) => {
       <NavItem>
         <Link className="nav-link" to="/customers">Customers</Link>
       </NavItem>
+      <NavItem>
+        <Link className="nav-link" to="/quotes">Quotes</Link>
+      </NavItem>
+      <NavItem>
+        <Link className="nav-link" to="/orders">Orders</Link>
+      </NavItem>
     </>
   );
 
