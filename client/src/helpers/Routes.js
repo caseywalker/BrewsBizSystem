@@ -2,15 +2,16 @@ import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Home from '../views/Home';
+import Products from '../views/Products';
 
 const PrivateRoute = ({
   component: Component,
   user,
-  registeredUser,
+  userFromDB,
   ...rest
 }) => {
-  const routeChecker = (attributes) => ((user && registeredUser)
-    ? (<Component {...attributes} user={user} registeredUser={registeredUser} />)
+  const routeChecker = (attributes) => ((user && userFromDB)
+    ? (<Component {...attributes} user={user} userFromDB={userFromDB} />)
     : (<Redirect to={{ pathname: '/', state: { from: attributes.location } }} />));
   return <Route {...rest} render={(props) => routeChecker(props)} />;
 };
@@ -18,10 +19,11 @@ const PrivateRoute = ({
 PrivateRoute.propTypes = {
   component: PropTypes.func,
   user: PropTypes.any,
-  registeredUser: PropTypes.bool
+  userFromDB: PropTypes.any
 };
 function Routes({
-  user
+  user,
+  userFromDB
 }) {
   return (
     <div>
@@ -29,13 +31,23 @@ function Routes({
         <Route exact path='/' component={() => <Home
           user={user}
         />} />
+        <PrivateRoute
+          user={user}
+          userFromDB={userFromDB}
+          path='/products'
+          component={() => <Products
+            user={user}
+            userFromDB={userFromDB}
+          />}
+        />
       </Switch>
     </div>
   );
 }
 
 Routes.propTypes = {
-  user: PropTypes.any
+  user: PropTypes.any,
+  userFromDB: PropTypes.any
 };
 
 export default Routes;

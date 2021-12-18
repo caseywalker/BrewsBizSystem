@@ -3,9 +3,12 @@ import firebase from 'firebase';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from '../helpers/Routes';
 import './App.scss';
+import { getUserWithUID } from '../helpers/data/userData';
+import NavBar from '../components/NavBar';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [userFromDB, setUserFromDB] = useState(null);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
@@ -15,8 +18,10 @@ function App() {
           uid: authed.uid
         };
         setUser(userInfoObj);
+        getUserWithUID(authed.uid).then((resp) => setUserFromDB(resp));
       } else if (user || user === null) {
         setUser(false);
+        setUserFromDB(false);
       }
     });
   }, []);
@@ -24,8 +29,13 @@ function App() {
   return (
     <div className='App'>
       <Router>
+        <NavBar
+        user={user}
+        userFromDB={userFromDB}
+        />
         <Routes
         user={user}
+        userFromDB={userFromDB}
         />
       </Router>
     </div>
