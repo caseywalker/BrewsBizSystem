@@ -12,6 +12,7 @@ function OrderCard({
   orderDate
 }) {
   const [thisCustomer, setThisCustomer] = useState(null);
+  const [date] = useState(orderDate.split('T'));
 
   useEffect(() => {
     getCustomerByID(customerID).then((customer) => setThisCustomer(customer));
@@ -24,7 +25,7 @@ function OrderCard({
         <CardBody>
           <CardTitle tag="h3">Order for {thisCustomer.customerName}</CardTitle>
           <CardText>Total: ${orderAmount}</CardText>
-          <CardText>Date Ordered: {orderDate}</CardText>
+          <CardText>Date Ordered: {date[0]}</CardText>
         </CardBody>
       </Card>
       }

@@ -51,7 +51,7 @@ namespace BrewsBizSystem.DataAccess
       return db.QueryFirstOrDefault<Quote>(sql, new { quoteID });
     }
 
-    internal void CreateNewQuote(NewQuote quote)
+    internal Quote CreateNewQuote(NewQuote quote)
     {
       using var db = new SqlConnection(_connectionString);
 
@@ -60,13 +60,16 @@ namespace BrewsBizSystem.DataAccess
            ,CustomerID
            ,QuoteAmount
            ,Complete)
+    OUTPUT INSERTED.*
      VALUES
            (@UserID
            ,@CustomerID
            ,0.0
            ,0)";
 
-      var result = db.Execute(sql, quote);
+      var result = db.QueryFirstOrDefault<Quote>(sql, quote);
+
+      return result;
     }
 
     internal Quote AddProduct(Guid quoteID, QuoteProduct newItem)
