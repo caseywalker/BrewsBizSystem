@@ -7,6 +7,7 @@ import Customers from '../views/Customers';
 import Quotes from '../views/Quotes';
 import Orders from '../views/Orders';
 import SingleQuote from '../views/SingleQuote';
+import QuoteAddProducts from '../views/QuoteAddProducts';
 
 const PrivateRoute = ({
   component: Component,
@@ -76,6 +77,15 @@ function Routes({
           userFromDB={userFromDB}
           path='/singleQuote/:quoteID'
           component={() => <SingleQuote
+            user={user}
+            userFromDB={userFromDB}
+          />}
+        />
+        <PrivateRoute
+          user={user}
+          userFromDB={userFromDB}
+          path='/quoteAddProducts/:quoteID'
+          component={() => <QuoteAddProducts
             user={user}
             userFromDB={userFromDB}
           />}

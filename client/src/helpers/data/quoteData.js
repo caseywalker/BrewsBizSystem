@@ -27,6 +27,12 @@ const addNewQuote = (quoteObj) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const addProductToQuote = (quoteID, productObj) => new Promise((resolve, reject) => {
+  axios.put(`${dbURL}/api/quotes/addProductToQuote/${quoteID}`, productObj)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
 export {
-  getOpenQuotes, getQuoteByID, getQuoteDetailsByID, addNewQuote
+  getOpenQuotes, getQuoteByID, getQuoteDetailsByID, addNewQuote, addProductToQuote
 };
