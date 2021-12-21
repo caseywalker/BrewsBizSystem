@@ -19,6 +19,7 @@ function Quotes() {
           customerID={quote.customerID}
           quoteAmount={quote.quoteAmount}
           quoteDate={quote.quoteDate}
+          setQuotes={setQuotes}
           />
         ))
       }

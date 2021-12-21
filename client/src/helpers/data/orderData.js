@@ -15,4 +15,10 @@ const getOrderByID = (orderID) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export { getAllOrders, getOrderByID };
+const placeOrder = (quoteID) => new Promise((resolve, reject) => {
+  axios.post(`${dbURL}/api/orders/createOrder/${quoteID}`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
+export { getAllOrders, getOrderByID, placeOrder };

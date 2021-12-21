@@ -26,9 +26,12 @@ function SingleQuote() {
         thisQuote && thisQuote.map((quoteDetail) => (
           <QuoteProduct
           key={quoteDetail.quoteDetailID}
+          quoteID={quoteDetail.quoteID}
+          quoteDetailID={quoteDetail.quoteDetailID}
           productID={quoteDetail.productID}
           productPrice={quoteDetail.productPrice}
           productQuantity={quoteDetail.productQuantity}
+          setThisQuote={setThisQuote}
           />
         ))
       }
