@@ -40,9 +40,9 @@ namespace BrewsBizSystem.Controllers
     }
 
     [HttpPost]
-    public void CreateQuote(NewQuote quote)
+    public Quote CreateQuote(NewQuote quote)
     {
-      _repo.CreateNewQuote(quote);
+      return _repo.CreateNewQuote(quote);
     }
 
     [HttpPut("addProductToQuote/{quoteID}")]

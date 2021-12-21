@@ -15,9 +15,11 @@ function Quotes() {
         quotes && quotes.map((quote) => (
           <QuoteCard
           key={quote.quoteID}
+          quoteID={quote.quoteID}
           customerID={quote.customerID}
           quoteAmount={quote.quoteAmount}
           quoteDate={quote.quoteDate}
+          setQuotes={setQuotes}
           />
         ))
       }

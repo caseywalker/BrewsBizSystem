@@ -15,4 +15,18 @@ const getOrderByID = (orderID) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export { getAllOrders, getOrderByID };
+const getOrderDetailsByID = (orderID) => new Promise((resolve, reject) => {
+  axios.get(`${dbURL}/api/orderdetails/getOrderDetailsByOrderID/${orderID}`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
+const placeOrder = (quoteID) => new Promise((resolve, reject) => {
+  axios.post(`${dbURL}/api/orders/createOrder/${quoteID}`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
+export {
+  getAllOrders, getOrderByID, getOrderDetailsByID, placeOrder
+};
