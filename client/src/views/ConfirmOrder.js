@@ -21,8 +21,7 @@ function ConfirmOrder() {
   }, []);
 
   const handleClick = () => {
-    placeOrder(params.quoteID);
-    history.push('/orders');
+    placeOrder(params.quoteID).then((orderResp) => history.push(`/orderDetails/${orderResp.orderID}`));
   };
 
   return (

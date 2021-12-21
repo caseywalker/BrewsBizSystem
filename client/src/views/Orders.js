@@ -16,6 +16,7 @@ function Orders() {
         orders && orders.map((order) => (
           <OrderCard
           key={order.orderID}
+          orderID={order.orderID}
           customerID={order.customerID}
           orderAmount={order.orderAmount}
           orderDate={order.orderDate}
