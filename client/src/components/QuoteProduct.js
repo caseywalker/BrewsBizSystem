@@ -38,10 +38,10 @@ function QuoteProduct({
            { product && <CardTitle tag="h3">{product.productName}</CardTitle> }
           <CardText>Product Price: ${productPrice}</CardText>
           <CardText>Quantity: {productQuantity}</CardText>
-          <Button className='mt-1' color='info' onClick={() => handleClick()}>
+          <Button className='mt-1 mx-1' color='info' onClick={() => handleClick()}>
             { editing ? 'Close' : 'Edit' }
           </Button>
-          <Button className='mt-1' color='danger' onClick={() => handleDelete()}>Remove</Button>
+          <Button className='mt-1 mx-1' color='danger' onClick={() => handleDelete()}>Remove</Button>
           {
             editing && <EditQuoteProductForm
             quoteDetailID={quoteDetailID}

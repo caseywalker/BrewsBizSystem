@@ -55,10 +55,10 @@ function Reports() {
   return (
     <div>
       <h3>Sales Report History</h3>
-      <Button className='mt-1' color='info' onClick={() => handleClick('day')}>Daily Report</Button>
-      <Button className='mt-1' color='info' onClick={() => handleClick('week')}>Weekly Report</Button>
-      <Button className='mt-1' color='info' onClick={() => handleClick('month')}>Monthly Report</Button>
-      <Button className='mt-1' color='info' onClick={() => handleClick('year')}>Year Report</Button>
+      <Button className='mt-1 mx-1' color='info' onClick={() => handleClick('day')}>Daily Report</Button>
+      <Button className='mt-1 mx-1' color='info' onClick={() => handleClick('week')}>Weekly Report</Button>
+      <Button className='mt-1 mx-1' color='info' onClick={() => handleClick('month')}>Monthly Report</Button>
+      <Button className='mt-1 mx-1' color='info' onClick={() => handleClick('year')}>Year Report</Button>
       {
         viewDay && <ReportCard
         reportTitle={'Daily Sales'}

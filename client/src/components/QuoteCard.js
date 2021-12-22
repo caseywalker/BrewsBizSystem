@@ -45,7 +45,7 @@ function QuoteCard({
           <CardText>Total: ${quoteAmount}</CardText>
           <CardText>Date Created: {date[0]}</CardText>
           <Button className='mt-1' color='info' onClick={handleClick}>View Details</Button>
-          <Button className='mt-1' color='danger' onClick={handleDelete}>Delete Quote</Button>
+          <Button className='mt-1 mx-1' color='danger' onClick={handleDelete}>Delete Quote</Button>
           <Button className='mt-1' color='success' onClick={handleOrder}>Place Order</Button>
         </CardBody>
       </Card>
