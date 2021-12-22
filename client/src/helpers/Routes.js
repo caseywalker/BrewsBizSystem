@@ -10,6 +10,7 @@ import SingleQuote from '../views/SingleQuote';
 import QuoteAddProducts from '../views/QuoteAddProducts';
 import ConfirmOrder from '../views/ConfirmOrder';
 import SingleOrder from '../views/SingleOrder';
+import Reports from '../views/Reports';
 
 const PrivateRoute = ({
   component: Component,
@@ -70,6 +71,15 @@ function Routes({
           userFromDB={userFromDB}
           path='/orders'
           component={() => <Orders
+            user={user}
+            userFromDB={userFromDB}
+          />}
+        />
+        <PrivateRoute
+          user={user}
+          userFromDB={userFromDB}
+          path='/reports'
+          component={() => <Reports
             user={user}
             userFromDB={userFromDB}
           />}
