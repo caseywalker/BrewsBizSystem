@@ -22,6 +22,7 @@ function SingleOrder() {
     <div>
       <h3>Single Order View</h3>
       <Button className='mb-2' color='warning' onClick={handleBack}>Back To Orders</Button>
+      <div className='order-container'>
       {
         thisOrder && thisOrder.map((orderDetail) => (
           <OrderProduct
@@ -32,6 +33,7 @@ function SingleOrder() {
           />
         ))
       }
+      </div>
     </div>
   );
 }

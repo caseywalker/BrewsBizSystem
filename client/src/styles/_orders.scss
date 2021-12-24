@@ -1,0 +1,21 @@
+.order-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.order-cards {
+  text-transform: capitalize;
+  width: 400px;
+  height:  250px;
+  padding: 5px 10px;
+  margin: 10px 0px;
+}
+
+.order-product-cards {
+  text-transform: capitalize;
+  width: 400px;
+  height:  200px;
+  padding: 5px 10px;
+  margin: 10px 0px;
+}

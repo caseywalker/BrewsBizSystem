@@ -12,6 +12,7 @@ function Orders() {
   return (
     <div>
       <h3>Order</h3>
+      <div className='order-container'>
       {
         orders && orders.map((order) => (
           <OrderCard
@@ -23,6 +24,7 @@ function Orders() {
           />
         ))
       }
+      </div>
     </div>
   );
 }
