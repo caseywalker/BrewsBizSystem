@@ -12,6 +12,7 @@ function Products() {
   return (
     <div>
       <h3>Products</h3>
+      <div className='product-container'>
       {
         products && products.map((product) => (
           <ProductCard
@@ -22,6 +23,7 @@ function Products() {
           />
         ))
       }
+      </div>
     </div>
   );
 }
