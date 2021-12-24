@@ -33,7 +33,7 @@ function QuoteProduct({
 
   return (
     <div>
-      <Card className='product-cards'>
+      <Card className='quote-product-cards'>
         <CardBody>
            { product && <CardTitle tag="h3">{product.productName}</CardTitle> }
           <CardText>Product Price: ${productPrice}</CardText>

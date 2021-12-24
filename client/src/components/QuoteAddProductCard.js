@@ -21,7 +21,7 @@ function QuoteAddProductCard({
 
   return (
     <div>
-      <Card className='expense-cards'>
+      <Card className='quote-add-products'>
         <CardBody>
           <CardTitle tag="h3">{productName}</CardTitle>
           <CardText>{productDescription}</CardText>

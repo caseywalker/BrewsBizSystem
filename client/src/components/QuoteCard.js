@@ -39,7 +39,7 @@ function QuoteCard({
   return (
     <div>
       {
-        thisCustomer && <Card className='expense-cards'>
+        thisCustomer && <Card className='quote-cards'>
         <CardBody>
           <CardTitle tag="h3">Quote for {thisCustomer.customerName}</CardTitle>
           <CardText>Total: ${quoteAmount}</CardText>

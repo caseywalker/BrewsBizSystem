@@ -27,6 +27,7 @@ function SingleQuote() {
       <h3>Single Quote View</h3>
       <Button className='mb-2 mx-1' color='success' onClick={handleClick}>Add Products</Button>
       <Button className='mb-2 mx-1' color='warning' onClick={handleBack}>Back To Quotes</Button>
+      <div className='quote-container'>
       {
         thisQuote && thisQuote.map((quoteDetail) => (
           <QuoteProduct
@@ -40,6 +41,7 @@ function SingleQuote() {
           />
         ))
       }
+      </div>
     </div>
   );
 }

@@ -21,6 +21,7 @@ function Quotes() {
     <div>
       <h3>Quotes</h3>
       <Button className='mb-2' color='info' onClick={handleClick}>New Quote</Button>
+      <div className='quote-container'>
       {
         quotes && quotes.map((quote) => (
           <QuoteCard
@@ -33,6 +34,7 @@ function Quotes() {
           />
         ))
       }
+      </div>
     </div>
   );
 }
