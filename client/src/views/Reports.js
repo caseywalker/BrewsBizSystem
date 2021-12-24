@@ -55,38 +55,40 @@ function Reports() {
   return (
     <div>
       <h3>Sales Report History</h3>
-      <Button className='mt-1' color='info' onClick={() => handleClick('day')}>Daily Report</Button>
-      <Button className='mt-1' color='info' onClick={() => handleClick('week')}>Weekly Report</Button>
-      <Button className='mt-1' color='info' onClick={() => handleClick('month')}>Monthly Report</Button>
-      <Button className='mt-1' color='info' onClick={() => handleClick('year')}>Year Report</Button>
-      {
-        viewDay && <ReportCard
-        reportTitle={'Daily Sales'}
-        totalRevenue={dayReport.totalRevenue}
-        totalProducts={dayReport.totalProducts}
-        />
-      }
-      {
-        viewWeek && <ReportCard
-        reportTitle={'Weekly Sales'}
-        totalRevenue={weekReport.totalRevenue}
-        totalProducts={weekReport.totalProducts}
-        />
-      }
-      {
-        viewMonth && <ReportCard
-        reportTitle={'Monthly Sales'}
-        totalRevenue={monthReport.totalRevenue}
-        totalProducts={monthReport.totalProducts}
-        />
-      }
-      {
-        viewYear && <ReportCard
-        reportTitle={'Yearly Sales'}
-        totalRevenue={yearReport.totalRevenue}
-        totalProducts={yearReport.totalProducts}
-        />
-      }
+      <Button className='mt-1 mx-1' color='info' onClick={() => handleClick('day')}>Daily Report</Button>
+      <Button className='mt-1 mx-1' color='info' onClick={() => handleClick('week')}>Weekly Report</Button>
+      <Button className='mt-1 mx-1' color='info' onClick={() => handleClick('month')}>Monthly Report</Button>
+      <Button className='mt-1 mx-1' color='info' onClick={() => handleClick('year')}>Year Report</Button>
+      <div className='report-container'>
+        {
+          viewDay && <ReportCard
+          reportTitle={'Daily Sales'}
+          totalRevenue={dayReport.totalRevenue}
+          totalProducts={dayReport.totalProducts}
+          />
+        }
+        {
+          viewWeek && <ReportCard
+          reportTitle={'Weekly Sales'}
+          totalRevenue={weekReport.totalRevenue}
+          totalProducts={weekReport.totalProducts}
+          />
+        }
+        {
+          viewMonth && <ReportCard
+          reportTitle={'Monthly Sales'}
+          totalRevenue={monthReport.totalRevenue}
+          totalProducts={monthReport.totalProducts}
+          />
+        }
+        {
+          viewYear && <ReportCard
+          reportTitle={'Yearly Sales'}
+          totalRevenue={yearReport.totalRevenue}
+          totalProducts={yearReport.totalProducts}
+          />
+        }
+      </div>
     </div>
   );
 }

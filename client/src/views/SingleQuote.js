@@ -14,6 +14,10 @@ function SingleQuote() {
     history.push(`/quoteAddProducts/${params.quoteID}`);
   };
 
+  const handleBack = () => {
+    history.push('/quotes');
+  };
+
   useEffect(() => {
     getQuoteDetailsByID(params.quoteID).then((detailsArray) => setThisQuote(detailsArray));
   }, []);
@@ -21,7 +25,9 @@ function SingleQuote() {
   return (
     <div>
       <h3>Single Quote View</h3>
-      <Button className='mt-1' color='success' onClick={handleClick}>Add Products</Button>
+      <Button className='mb-2 mx-1' color='success' onClick={handleClick}>Add Products</Button>
+      <Button className='mb-2 mx-1' color='warning' onClick={handleBack}>Back To Quotes</Button>
+      <div className='quote-container'>
       {
         thisQuote && thisQuote.map((quoteDetail) => (
           <QuoteProduct
@@ -35,6 +41,7 @@ function SingleQuote() {
           />
         ))
       }
+      </div>
     </div>
   );
 }

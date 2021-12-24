@@ -29,7 +29,7 @@ function CustomerCard({
 
   return (
     <div>
-      <Card className='expense-cards'>
+      <Card className='customer-cards'>
         <CardBody>
           <CardTitle tag="h3">{customerName}</CardTitle>
           <CardText>Address: {customerAddress}</CardText>

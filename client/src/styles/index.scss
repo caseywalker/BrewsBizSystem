@@ -1,5 +1,11 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import 'variables';
+@import 'products';
+@import 'customers';
+@import 'quotes';
+@import 'orders';
+@import 'reports';
+@import 'home';
 
 body {
   background-color: $favColor;

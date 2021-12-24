@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Button } from 'reactstrap';
+import { useParams, useHistory } from 'react-router-dom';
 import OrderProduct from '../components/OrderProduct';
 import { getOrderDetailsByID } from '../helpers/data/orderData';
 
@@ -7,14 +8,21 @@ function SingleOrder() {
   const [thisOrder, setThisOrder] = useState(null);
 
   const params = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     getOrderDetailsByID(params.orderID).then((resp) => setThisOrder(resp));
   }, []);
 
+  const handleBack = () => {
+    history.push('/orders');
+  };
+
   return (
     <div>
       <h3>Single Order View</h3>
+      <Button className='mb-2' color='warning' onClick={handleBack}>Back To Orders</Button>
+      <div className='order-container'>
       {
         thisOrder && thisOrder.map((orderDetail) => (
           <OrderProduct
@@ -25,6 +33,7 @@ function SingleOrder() {
           />
         ))
       }
+      </div>
     </div>
   );
 }

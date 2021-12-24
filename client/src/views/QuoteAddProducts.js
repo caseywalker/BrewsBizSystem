@@ -14,7 +14,8 @@ function QuoteAddProducts() {
 
   return (
     <div>
-      <h3>Adding products to {params.quoteID}</h3>
+      <h3>Adding products to quote.</h3>
+      <div className='product-container'>
       {
         products && products.map((product) => (
           <QuoteAddProductCard
@@ -27,6 +28,7 @@ function QuoteAddProducts() {
           />
         ))
       }
+      </div>
     </div>
   );
 }

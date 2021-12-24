@@ -13,6 +13,7 @@ function Customers({ userFromDB }) {
   return (
     <div>
       <h3>Customers</h3>
+      <div className='customer-container'>
       {
         customers && customers.map((customer) => (
           <CustomerCard
@@ -27,6 +28,7 @@ function Customers({ userFromDB }) {
           />
         ))
       }
+      </div>
     </div>
   );
 }

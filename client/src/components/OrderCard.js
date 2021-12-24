@@ -29,7 +29,7 @@ function OrderCard({
   return (
     <div>
       {
-        thisCustomer && <Card className='expense-cards'>
+        thisCustomer && <Card className='order-cards'>
         <CardBody>
           <CardTitle tag="h3">Order for {thisCustomer.customerName}</CardTitle>
           <CardText>Total: ${orderAmount}</CardText>

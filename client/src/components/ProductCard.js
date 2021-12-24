@@ -12,7 +12,7 @@ function ProductCard({
 }) {
   return (
     <div>
-      <Card className='expense-cards'>
+      <Card className='product-cards'>
         <CardBody>
           <CardTitle tag="h3">{productName}</CardTitle>
           <CardText>{productDescription}</CardText>

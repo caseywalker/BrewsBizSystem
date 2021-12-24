@@ -24,13 +24,14 @@ function Home({
   );
 
   return (
-    <div>
+    <div className='home-container'>
       <Card className='home-card'>
         <CardBody>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">An e-commerce platform for the Dad in your life.</CardSubtitle>
-          <CardText>Our goal is to be the one stop shop for all Dad needs.</CardText>
+          <CardSubtitle tag="h6" className="mb-2 text-muted">A Business to Business management system for our microbrewery.</CardSubtitle>
+          <CardText>A single platform to allow our business to create quotes from our products, orders to our distributors and customers, and track sales reports.</CardText>
         </CardBody>
       </Card>
+      <div className='break'></div>
       <Card className='home-form'>
         <CardBody>
         { user ? authenticated() : notAuthenticated() }

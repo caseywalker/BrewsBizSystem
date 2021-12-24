@@ -25,9 +25,9 @@ function ConfirmOrder() {
   };
 
   return (
-    <div>
+    <div className='order-container'>
       {
-        confirmQuote && <Card className='expense-cards'>
+        confirmQuote && <Card className='confirm-order-cards'>
         <CardBody>
           <CardTitle tag="h3">Quote for {thisCustomer.customerName}</CardTitle>
           <CardText>Total: ${confirmQuote.quoteAmount}</CardText>

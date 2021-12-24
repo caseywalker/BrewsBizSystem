@@ -1,0 +1,25 @@
+.home-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.home-card {
+  text-transform: capitalize;
+  width: 400px;
+  height:  200px;
+  padding: 5px 10px;
+  margin: 10px 0px;
+}
+
+.home-form {
+  text-transform: capitalize;
+  width: 400px;
+  height:  150px;
+  padding: 5px 10px;
+  margin: 10px 0px;
+}
+
+.break {
+  flex-basis: 100%;
+}
