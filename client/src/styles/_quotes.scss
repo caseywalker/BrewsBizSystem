@@ -1,0 +1,13 @@
+.quote-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.quote-cards {
+  text-transform: capitalize;
+  width: 400px;
+  height:  250px;
+  padding: 5px 5px;
+  margin: 10px 0px;
+}
